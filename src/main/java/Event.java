@@ -52,6 +52,6 @@ public class Event extends Task{
     @Override
     public String toString() {
         return "[E] [" + this.getStatusIcon() + "] " + this.getDescription() +
-                "(from: " + deadlineStart + " to: " + deadlineEnd + ")";
+                " (from: " + deadlineStart + " to: " + deadlineEnd + ")";
     }
 }

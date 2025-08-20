@@ -20,7 +20,8 @@ public class Burrito {
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < cache.size(); i++) {
             int tempi = i + 1;
-            System.out.println(tempi + ". [" + cache.get(i).getType() + "] [" + cache.get(i).getStatusIcon() + "] " + cache.get(i).getDescription());
+            System.out.println(tempi + ". [" + cache.get(i).getType() + "] [" + cache.get(i).getStatusIcon() + "] "
+                    + cache.get(i).getDescription());
 
         }
     }
@@ -90,7 +91,7 @@ public class Burrito {
      * @return void.
      */
     static public void deadline(String[] inputArr) {
-        String[] newInputArr = inputArr[1].split("/by ", 2);
+        String[] newInputArr = inputArr[1].split(" /by ", 2);
         try {
             cache.add(new Deadline(newInputArr[0], newInputArr[1]));
             System.out.println("Got it. I've added this task:");
@@ -111,8 +112,8 @@ public class Burrito {
      * @return void.
      */
     static public void event(String[] inputArr) {
-        String[] newInputArr = inputArr[1].split("/from ", 2);
-        String[] newInputArr2 = newInputArr[1].split("/to ", 2);
+        String[] newInputArr = inputArr[1].split(" /from ", 2);
+        String[] newInputArr2 = newInputArr[1].split(" /to ", 2);
 
         try {
             cache.add(new Event(newInputArr[0], newInputArr2[0], newInputArr2[1]));
@@ -138,15 +139,15 @@ public class Burrito {
     }
 
     public static void main(String[] args) {
-        String logo = " ____                      _        \n"
+        /*String logo = " ____                      _        \n"
                 + "|  _ \\                  (_) |       \n"
                 + "| |_) |  _   _ _ __ _ __ _| |_ ___  \n"
                 + "|  _ <  | | | | .--| .--| | __/   \\ \n"
                 + "| |_) | | |_| | |  | |  | | || (_) |\n"
                 + "|____/   \\__,_|_|  |_|  |_|\\__\\___/ \n";
-
+*/
         String name = "Burrito";
-        System.out.println(logo);
+        /*System.out.println(logo);*/
         System.out.println(lineseperator);
         System.out.println("Hello! I'm " + name + ".\nWhat can I do for you?");
         System.out.println(lineseperator);
@@ -154,10 +155,11 @@ public class Burrito {
         String input;
         boolean isCommand = false;
 
+        Scanner scanner = new Scanner(System.in);
 
-        while (!exit) {
+        while (!exit && scanner.hasNextLine()) {
             isCommand = false;
-            Scanner scanner = new Scanner(System.in);
+
             input = scanner.nextLine();
             String inputArr[] = input.split(" ", 2);
             System.out.println(lineseperator);
@@ -206,7 +208,6 @@ public class Burrito {
 
             }
             System.out.println(lineseperator);
-
 
 
 
