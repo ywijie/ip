@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Burrito {
 
     static List<Task> cache = new ArrayList<>();
-    static String[] commands = {"bye", "list", "mark", "unmark", "todo", "deadline", "event"};
+    static String[] commands = {"bye", "list", "mark", "unmark", "todo", "deadline", "event", "delete"};
     static String lineseperator = "____________________________________________________________";
 
 
@@ -135,6 +135,24 @@ public class Burrito {
     }
 
     /**
+     * Deletes task from cache
+     *
+     * @param inputArr User input
+     * @return void.
+     */
+    static public void delete(String[] inputArr) {
+        try {
+            System.out.println("Noted. I've removed this task:");
+            System.out.println(cache.get(Integer.parseInt(inputArr[1]) - 1).toString());
+            cache.remove(Integer.parseInt(inputArr[1]) - 1);
+            System.out.println("Now you have " + cache.size() + " task(s) in the list.");
+
+        } catch (Exception e) {
+            System.out.println("Invalid index!");
+        } finally {}
+    }
+
+    /**
      * Message for terminating the program
      *
      * @return void.
@@ -194,6 +212,10 @@ public class Burrito {
 
                     } else if (inputArr[0].equals("event")) {
                         event(inputArr);
+                        isCommand = true;
+
+                    } else if (inputArr[0].equals("delete")) {
+                        delete(inputArr);
                         isCommand = true;
 
                     } else if (inputArr[0].equals("bye")) {
