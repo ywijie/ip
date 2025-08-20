@@ -2,9 +2,12 @@ public class Task {
     protected String description;
     protected boolean isDone;
 
+
+
     public Task(String description) {
         this.description = description;
         this.isDone = false;
+
     }
 
     /**
@@ -32,5 +35,24 @@ public class Task {
      */
     public String getDescription() {
         return description;
+    }
+
+    /**
+     * Getter for the type of event
+     *
+     * @return String representation of event type
+     */
+    public String getType() {
+        return " ";
+    }
+
+    /**
+     * toString function
+     *
+     * @return String representation of object
+     */
+    @Override
+    public String toString() {
+        return "[ ] [" + this.getStatusIcon() + "] " + description;
     }
 }
