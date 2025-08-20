@@ -77,10 +77,16 @@ public class Burrito {
      * @return void.
      */
     static public void todo(String[] inputArr) {
-        cache.add(new Todo(inputArr[1]));
-        System.out.println("Got it. I've added this task:");
-        System.out.println(cache.get(cache.size() - 1).toString());
-        System.out.println("Now you have " + cache.size() + " task(s) in the list.");
+        try {
+            cache.add(new Todo(inputArr[1]));
+            System.out.println("Got it. I've added this task:");
+            System.out.println(cache.get(cache.size() - 1).toString());
+            System.out.println("Now you have " + cache.size() + " task(s) in the list.");
+
+        } catch (Exception e) {
+            System.out.println("Todo description cannot be empty!");
+
+        } finally {}
 
     }
 
