@@ -10,6 +10,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Burrito {
 
@@ -17,7 +19,8 @@ public class Burrito {
     static String[] commands = {"bye", "list", "mark", "unmark", "todo", "deadline", "event", "delete"};
     static String lineseperator = "____________________________________________________________";
     static String home = System.getProperty("user.home");
-    static String fileName = "./save.txt";
+    static String filePath = "src/main/java/data/";
+    static String fileName = "save.txt";
 
 
     /**
@@ -179,8 +182,11 @@ public class Burrito {
      */
     static public void initCache() {
         try {
-
-            File saveFile = new File(fileName);
+            Files.createDirectories(Paths.get(filePath));
+            File saveFile = new File(filePath + fileName);
+            if (saveFile.createNewFile()) {
+                System.out.println("Warning! Save file not found on Disk. Creating a new one now...");
+            }
             Scanner myReader = new Scanner(saveFile);
             while (myReader.hasNextLine()) {
                 boolean Done = false;
@@ -215,6 +221,7 @@ public class Burrito {
 
         } catch (Exception e) {
             System.out.println("Error initializing cache.");
+            // System.out.println(e.getMessage());
         } finally { }
     }
 
@@ -226,16 +233,12 @@ public class Burrito {
     static public void saveToDisk() {
         try {
 
-            File saveFile = new File(fileName);
-            if (saveFile.createNewFile()) {
-                System.out.println("Warning! Save file not found on Disk. Creating a new one now...");
-            } else {
-                FileWriter fw = new FileWriter(fileName);
-                for (Task task : cache) {
-                    fw.write(task.toString() + "\n");
-                }
-                fw.close();
+
+            FileWriter fw = new FileWriter(filePath + fileName);
+            for (Task task : cache) {
+                fw.write(task.toString() + "\n");
             }
+            fw.close();
         } catch (Exception e) {
             System.out.println("Error saving to disk.");
         } finally {}
