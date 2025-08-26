@@ -5,6 +5,11 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Burrito {
 
@@ -103,6 +108,9 @@ public class Burrito {
     static public void deadline(String[] inputArr) {
         try {
             String[] newInputArr = inputArr[1].split(" /by ", 2);
+            String[] newInputArr2 = newInputArr[1].split(" ");
+            newInputArr[1] = dateParser(newInputArr2[0]) + " " + timeParser(newInputArr2[1]);
+
             cache.add(new Deadline(newInputArr[0], newInputArr[1]));
             System.out.println("Got it. I've added this task:");
             System.out.println(cache.get(cache.size() - 1).toString());
@@ -127,6 +135,13 @@ public class Burrito {
         try {
             String[] newInputArr = inputArr[1].split(" /from ", 2);
             String[] newInputArr2 = newInputArr[1].split(" /to ", 2);
+
+            String[] newInputArr3 = newInputArr2[0].split(" ");
+            newInputArr2[0] = dateParser(newInputArr3[0]) + " " + timeParser(newInputArr3[1]);
+
+            String[] newInputArr4 = newInputArr2[1].split(" ");
+            newInputArr2[1] = dateParser(newInputArr4[0]) + " " + timeParser(newInputArr4[1]);
+
             cache.add(new Event(newInputArr[0], newInputArr2[0], newInputArr2[1]));
             System.out.println("Got it. I've added this task:");
             System.out.println(cache.get(cache.size() - 1).toString());
@@ -215,7 +230,7 @@ public class Burrito {
             if (saveFile.createNewFile()) {
                 System.out.println("Warning! Save file not found on Disk. Creating a new one now...");
             } else {
-                FileWriter fw = new FileWriter("save.txt");
+                FileWriter fw = new FileWriter(fileName);
                 for (Task task : cache) {
                     fw.write(task.toString() + "\n");
                 }
@@ -225,6 +240,47 @@ public class Burrito {
             System.out.println("Error saving to disk.");
         } finally {}
     }
+
+    /**
+     * Parses date from input string
+     *
+     * @param input User input in format "YYYY/MM/DD"
+     * @return Reformatted date.
+     */
+    static public String dateParser(String input) {
+        try {
+
+            LocalDate d1 = LocalDate.parse(input.replace("/", "-"));
+
+            return d1.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+        } catch (Exception e) {
+            System.out.println("Error! Wrong date formatting (Use YYYY-MM-DD, eg 2019-12-28).");
+            return input;
+        } finally { }
+    }
+
+    /**
+     * Parses time from input string
+     *
+     * @param input User input in 24h format
+     * @return Reformatted time in 12h format.
+     */
+    static public String timeParser(String input) {
+        try {
+            String _24HourTime = input.charAt(0) + input.charAt(1) + ":" + input.charAt(2) + input.charAt(3);
+            SimpleDateFormat _24HourSDF = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat _12HourSDF = new SimpleDateFormat("hh:mm a");
+            Date _24HourDt = _24HourSDF.parse(_24HourTime);
+            return _12HourSDF.format(_24HourDt);
+
+
+        } catch (Exception e) {
+            System.out.println("Error! Wrong time formatting (Use 24h format, eg: '1300' for 1pm).");
+            return input;
+        } finally { }
+    }
+
+
 
     /**
      * Message for terminating the program
