@@ -1,0 +1,3 @@
+[T] [ ] Todo test
+[D] [X] Deadline test (by: Mon 10pm)
+[E] [ ] Event test (from: Mon 10pm to: Mon 12pm)

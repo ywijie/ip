@@ -1,14 +1,18 @@
+import java.io.FileWriter;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+import java.io.Writer;
 
 public class Burrito {
 
     static List<Task> cache = new ArrayList<>();
     static String[] commands = {"bye", "list", "mark", "unmark", "todo", "deadline", "event", "delete"};
     static String lineseperator = "____________________________________________________________";
-
-
+    static String home = System.getProperty("user.home");
+    static String fileName = "./save.txt";
 
 
     /**
@@ -20,8 +24,8 @@ public class Burrito {
         System.out.println("Here are the tasks in your list:");
         for (int i = 0; i < cache.size(); i++) {
             int tempi = i + 1;
-            System.out.println(tempi + ". [" + cache.get(i).getType() + "] [" + cache.get(i).getStatusIcon() + "] "
-                    + cache.get(i).getDescription());
+            
+            System.out.println(tempi + ". " + cache.get(i).toString());
 
         }
     }
@@ -97,8 +101,8 @@ public class Burrito {
      * @return void.
      */
     static public void deadline(String[] inputArr) {
-        String[] newInputArr = inputArr[1].split(" /by ", 2);
         try {
+            String[] newInputArr = inputArr[1].split(" /by ", 2);
             cache.add(new Deadline(newInputArr[0], newInputArr[1]));
             System.out.println("Got it. I've added this task:");
             System.out.println(cache.get(cache.size() - 1).toString());
@@ -118,10 +122,11 @@ public class Burrito {
      * @return void.
      */
     static public void event(String[] inputArr) {
-        String[] newInputArr = inputArr[1].split(" /from ", 2);
-        String[] newInputArr2 = newInputArr[1].split(" /to ", 2);
+
 
         try {
+            String[] newInputArr = inputArr[1].split(" /from ", 2);
+            String[] newInputArr2 = newInputArr[1].split(" /to ", 2);
             cache.add(new Event(newInputArr[0], newInputArr2[0], newInputArr2[1]));
             System.out.println("Got it. I've added this task:");
             System.out.println(cache.get(cache.size() - 1).toString());
@@ -153,6 +158,75 @@ public class Burrito {
     }
 
     /**
+     * Populates cache with entries from file
+     *
+     * @return void.
+     */
+    static public void initCache() {
+        try {
+
+            File saveFile = new File(fileName);
+            Scanner myReader = new Scanner(saveFile);
+            while (myReader.hasNextLine()) {
+                boolean Done = false;
+                String data = myReader.nextLine();
+                if (data.charAt(1) == 'T') {
+                    if (data.charAt(5) == 'X') {
+                        Done = true;
+                    }
+                    cache.add(new Todo(data.substring(8)));
+                    cache.get(cache.size() - 1).setStatus(Done);
+
+                } else if (data.charAt(1) == 'D') {
+                    if (data.charAt(5) == 'X') {
+                        Done = true;
+                    }
+                    String[] newData = data.substring(8, data.length() - 1).split(" \\(by: ");
+                    cache.add(new Deadline(newData[0], newData[1]));
+                    cache.get(cache.size() - 1).setStatus(Done);
+
+                } else if (data.charAt(1) == 'E') {
+                    if (data.charAt(5) == 'X') {
+                        Done = true;
+                    }
+                    String[] newData = data.substring(8, data.length() - 1).split(" \\(from: ");
+                    String[] newData2 = newData[1].split(" to: ");
+
+                    cache.add(new Event(newData[0], newData2[0], newData2[1]));
+                    cache.get(cache.size() - 1).setStatus(Done);
+                } else { }
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Error initializing cache.");
+        } finally { }
+    }
+
+    /**
+     * Saves task list from cache to Hard Disk
+     *
+     * @return void.
+     */
+    static public void saveToDisk() {
+        try {
+
+            File saveFile = new File(fileName);
+            if (saveFile.createNewFile()) {
+                System.out.println("Warning! Save file not found on Disk. Creating a new one now...");
+            } else {
+                FileWriter fw = new FileWriter("save.txt");
+                for (Task task : cache) {
+                    fw.write(task.toString() + "\n");
+                }
+                fw.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Error saving to disk.");
+        } finally {}
+    }
+
+    /**
      * Message for terminating the program
      *
      * @return void.
@@ -178,6 +252,8 @@ public class Burrito {
         boolean exit = false;
         String input;
         boolean isCommand = false;
+
+        initCache();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -235,6 +311,7 @@ public class Burrito {
 
 
             }
+            saveToDisk();
             System.out.println(lineseperator);
 
 
