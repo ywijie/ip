@@ -1,4 +1,4 @@
-package Burrito.Parser;
+package burrito.Parser;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

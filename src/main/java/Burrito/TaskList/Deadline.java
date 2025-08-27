@@ -1,4 +1,4 @@
-package Burrito.TaskList;
+package burrito.TaskList;
 
 public class Deadline extends Task{
     protected String description;

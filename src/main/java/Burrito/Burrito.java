@@ -1,4 +1,4 @@
-package Burrito;
+package burrito;
 
 import java.io.FileWriter;
 import java.util.List;
@@ -12,16 +12,16 @@ import java.util.Date;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import Burrito.TaskList.*;
-import Burrito.UI.TextUI;
-import Burrito.Parser.Parser;
-import Burrito.Storage.Storage;
+import burrito.TaskList.*;
+import burrito.UI.TextUI;
+import burrito.Parser.Parser;
+import burrito.Storage.Storage;
 
 public class Burrito {
 
     static List<Task> cache = new ArrayList<>();
     private static final String lineseperator = "____________________________________________________________";
-    static String[] commands = {"bye", "list", "mark", "unmark", "todo", "deadline", "event", "delete"};
+    static String[] commands = {"bye", "list", "mark", "unmark", "todo", "deadline", "event", "delete", "find"};
 
 
     static TextUI TextUI;
@@ -79,6 +79,10 @@ public class Burrito {
 
                     } else if (inputArr[0].equals("delete")) {
                         cache = TaskList.delete(cache, inputArr);
+                        isCommand = true;
+
+                    } else if (inputArr[0].equals("find")) {
+                        TaskList.find(cache, inputArr);
                         isCommand = true;
 
                     } else if (inputArr[0].equals("bye")) {

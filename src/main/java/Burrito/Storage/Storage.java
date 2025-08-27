@@ -1,9 +1,9 @@
-package Burrito.Storage;
+package burrito.Storage;
 
-import Burrito.TaskList.Deadline;
-import Burrito.TaskList.Event;
-import Burrito.TaskList.Task;
-import Burrito.TaskList.Todo;
+import burrito.TaskList.Deadline;
+import burrito.TaskList.Event;
+import burrito.TaskList.Task;
+import burrito.TaskList.Todo;
 
 import java.io.File;
 import java.io.FileWriter;

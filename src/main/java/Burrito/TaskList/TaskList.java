@@ -1,6 +1,8 @@
-package Burrito.TaskList;
+package burrito.TaskList;
 
-import Burrito.Parser.Parser;
+import burrito.Parser.Parser;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskList {
@@ -155,6 +157,36 @@ public class TaskList {
             System.out.println("Invalid index!");
         } finally {}
         return cache;
+    }
+
+    /**
+     * Searches description of tasks from list of tasks for task based on search query from user
+     *
+     * @param inputArr User input, search query.
+     * @param cache List of tasks
+     * @return void
+     */
+    static public void find(List<Task> cache, String[] inputArr) {
+        try {
+            List<Task> tempCache = new ArrayList<Task>();
+            for (int i = 0; i < cache.size(); i++) {
+                if (cache.get(i).description.contains(inputArr[1])) {
+                    tempCache.add(cache.get(i));
+                }
+            }
+            if (tempCache.size() > 0) {
+                System.out.println("Here are matching tasks in your list:");
+                for (int i = 0; i < tempCache.size(); i++) {
+                    System.out.println((i + 1) + ". " + tempCache.get(i).toString());
+                }
+            } else {
+                System.out.println("No matching tasks in your list.");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Invalid search term!");
+        } finally {}
+
     }
 
 }
