@@ -1,6 +1,4 @@
-package Burrito.TaskList;
-
-import org.junit.jupiter.api.Test;
+package burrito.tasklist;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

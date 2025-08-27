@@ -1,8 +1,7 @@
-package Burrito.UI;
+package burrito.ui;
 
-import Burrito.TaskList.*;
+import burrito.tasklist.*;
 import java.util.List;
-import java.util.ArrayList;
 
 public class TextUI {
 

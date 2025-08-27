@@ -1,4 +1,4 @@
-package Burrito.TaskList;
+package burrito.tasklist;
 
 public class Todo extends Task{
     protected String description;

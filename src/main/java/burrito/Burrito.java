@@ -1,18 +1,18 @@
-package Burrito;
+package burrito;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Burrito.TaskList.*;
-import Burrito.UI.TextUI;
-import Burrito.Parser.Parser;
-import Burrito.Storage.Storage;
+import burrito.tasklist.*;
+import burrito.ui.TextUI;
+import burrito.parser.Parser;
+import burrito.storage.Storage;
 
 public class Burrito {
 
     static List<Task> cache = new ArrayList<>();
-    private static final String lineseperator = "____________________________________________________________";
+    private static final String lineSeperator = "____________________________________________________________";
     static String[] commands = {"bye", "list", "mark", "unmark", "todo", "deadline", "event", "delete"};
 
 
@@ -27,7 +27,7 @@ public class Burrito {
         storage = new Storage();
         parser = new Parser();
 
-        boolean exit = false;
+        boolean isDone = false;
         String input;
         boolean isCommand = false;
 
@@ -36,12 +36,12 @@ public class Burrito {
         TextUI.welcome();
         Scanner scanner = new Scanner(System.in);
 
-        while (!exit && scanner.hasNextLine()) {
+        while (!isDone && scanner.hasNextLine()) {
             isCommand = false;
 
             input = scanner.nextLine();
             String inputArr[] = input.split(" ", 2);
-            System.out.println(lineseperator);
+            System.out.println(lineSeperator);
 
             for (int i = 0; i < commands.length; i++) {
                 if (commands[i].equals(inputArr[0])) {
@@ -75,7 +75,7 @@ public class Burrito {
 
                     } else if (inputArr[0].equals("bye")) {
                         TextUI.bye();
-                        exit = true;
+                        isDone = true;
                         isCommand = true;
                     }
 
@@ -91,7 +91,7 @@ public class Burrito {
 
             }
             storage.saveToDisk();
-            System.out.println(lineseperator);
+            System.out.println(lineSeperator);
 
 
 
