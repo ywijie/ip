@@ -13,7 +13,7 @@ public class Burrito {
 
     static List<Task> cache = new ArrayList<>();
     private static final String lineSeperator = "____________________________________________________________";
-    static String[] commands = {"bye", "list", "mark", "unmark", "todo", "deadline", "event", "delete"};
+    static String[] commands = {"bye", "list", "mark", "unmark", "todo", "deadline", "event", "delete", "find"};
 
 
     static TextUI TextUI;
@@ -71,6 +71,10 @@ public class Burrito {
 
                     } else if (inputArr[0].equals("delete")) {
                         cache = TaskList.delete(cache, inputArr);
+                        isCommand = true;
+
+                    } else if (inputArr[0].equals("find")) {
+                        TaskList.find(cache, inputArr);
                         isCommand = true;
 
                     } else if (inputArr[0].equals("bye")) {
