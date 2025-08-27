@@ -1,4 +1,4 @@
-package Burrito;
+package burrito;
 
 import java.io.FileWriter;
 import java.util.List;
@@ -12,10 +12,10 @@ import java.util.Date;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import Burrito.TaskList.*;
-import Burrito.UI.TextUI;
-import Burrito.Parser.Parser;
-import Burrito.Storage.Storage;
+import burrito.TaskList.*;
+import burrito.UI.TextUI;
+import burrito.Parser.Parser;
+import burrito.Storage.Storage;
 
 public class Burrito {
 

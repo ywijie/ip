@@ -1,6 +1,6 @@
-package Burrito.TaskList;
+package burrito.TaskList;
 
-import Burrito.Parser.Parser;
+import burrito.Parser.Parser;
 import java.util.List;
 
 public class TaskList {
