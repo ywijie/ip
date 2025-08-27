@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/main/java/Burrito/TaskList/Event.java
-package burrito.TaskList;
-=======
 package burrito.tasklist;
->>>>>>> branch-A-CodingStandard:src/main/java/burrito/tasklist/Event.java
 
 public class Event extends Task{
     protected String description;

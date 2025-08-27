@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/main/java/Burrito/TaskList/Todo.java
-package burrito.TaskList;
-=======
 package burrito.tasklist;
->>>>>>> branch-A-CodingStandard:src/main/java/burrito/tasklist/Todo.java
 
 public class Todo extends Task{
     protected String description;

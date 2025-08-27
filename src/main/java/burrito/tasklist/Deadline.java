@@ -1,8 +1,4 @@
-<<<<<<< HEAD:src/main/java/Burrito/TaskList/Deadline.java
-package burrito.TaskList;
-=======
 package burrito.tasklist;
->>>>>>> branch-A-CodingStandard:src/main/java/burrito/tasklist/Deadline.java
 
 public class Deadline extends Task{
     protected String description;

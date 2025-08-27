@@ -1,12 +1,6 @@
-<<<<<<< HEAD:src/main/java/Burrito/TaskList/TaskList.java
-package burrito.TaskList;
-
-import burrito.Parser.Parser;
-=======
 package burrito.tasklist;
 
 import burrito.parser.Parser;
->>>>>>> branch-A-CodingStandard:src/main/java/burrito/tasklist/TaskList.java
 import java.util.List;
 
 public class TaskList {

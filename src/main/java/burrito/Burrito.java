@@ -4,17 +4,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-<<<<<<< HEAD:src/main/java/Burrito/Burrito.java
-import burrito.TaskList.*;
-import burrito.UI.TextUI;
-import burrito.Parser.Parser;
-import burrito.Storage.Storage;
-=======
 import burrito.tasklist.*;
 import burrito.ui.TextUI;
 import burrito.parser.Parser;
 import burrito.storage.Storage;
->>>>>>> branch-A-CodingStandard:src/main/java/burrito/Burrito.java
 
 public class Burrito {
 
