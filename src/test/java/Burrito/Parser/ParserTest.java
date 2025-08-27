@@ -1,4 +1,4 @@
-package Burrito.Parser;
+package burrito.parser;
 
 import org.junit.jupiter.api.Test;
 

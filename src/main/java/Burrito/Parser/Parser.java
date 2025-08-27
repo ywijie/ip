@@ -1,4 +1,8 @@
-package Burrito.Parser;
+<<<<<<< HEAD:src/main/java/Burrito/Parser/Parser.java
+package burrito.Parser;
+=======
+package burrito.parser;
+>>>>>>> branch-A-CodingStandard:src/main/java/burrito/parser/Parser.java
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

@@ -1,9 +1,18 @@
-package Burrito.Storage;
+<<<<<<< HEAD:src/main/java/Burrito/Storage/Storage.java
+package burrito.Storage;
 
-import Burrito.TaskList.Deadline;
-import Burrito.TaskList.Event;
-import Burrito.TaskList.Task;
-import Burrito.TaskList.Todo;
+import burrito.TaskList.Deadline;
+import burrito.TaskList.Event;
+import burrito.TaskList.Task;
+import burrito.TaskList.Todo;
+=======
+package burrito.storage;
+
+import burrito.tasklist.Deadline;
+import burrito.tasklist.Event;
+import burrito.tasklist.Task;
+import burrito.tasklist.Todo;
+>>>>>>> branch-A-CodingStandard:src/main/java/burrito/storage/Storage.java
 
 import java.io.File;
 import java.io.FileWriter;

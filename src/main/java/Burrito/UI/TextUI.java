@@ -1,8 +1,13 @@
-package Burrito.UI;
+<<<<<<< HEAD:src/main/java/Burrito/UI/TextUI.java
+package burrito.UI;
 
-import Burrito.TaskList.*;
+import burrito.TaskList.*;
+=======
+package burrito.ui;
+
+import burrito.tasklist.*;
+>>>>>>> branch-A-CodingStandard:src/main/java/burrito/ui/TextUI.java
 import java.util.List;
-import java.util.ArrayList;
 
 public class TextUI {
 
@@ -38,7 +43,7 @@ public class TextUI {
     }
 
     /**
-     * Welcome message for program init
+     * Welcome message for program initialisation 
      *
      * @return void.
      */
