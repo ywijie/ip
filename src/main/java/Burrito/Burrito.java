@@ -1,16 +1,8 @@
 package Burrito;
 
-import java.io.FileWriter;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.io.File;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import Burrito.TaskList.*;
 import Burrito.UI.TextUI;
