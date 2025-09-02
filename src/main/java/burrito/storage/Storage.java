@@ -83,12 +83,12 @@ public class Storage {
      *
      * @return void.
      */
-    static public void saveToDisk() {
+    static public void saveToDisk(List<Task> c) {
         try {
 
 
             FileWriter fw = new FileWriter(filePath + fileName);
-            for (Task task : cache) {
+            for (Task task : c) {
                 fw.write(task.toString() + "\n");
             }
             fw.close();

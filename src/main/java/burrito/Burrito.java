@@ -21,9 +21,61 @@ public class Burrito {
     static Storage storage;
     static Parser parser;
 
+    public String getResponse(String input) {
+        String inputArr[] = input.split(" ", 2);
+
+        for (int i = 0; i < commands.length; i++) {
+            if (commands[i].equals(inputArr[0])) {
+                if (inputArr[0].equals("list")) {
+                    return TextUI.list(cache);
+
+                } else if (inputArr[0].equals("mark")) {
+                    return TaskList.mark(cache, inputArr);
+
+
+                } else if (inputArr[0].equals("unmark")) {
+                    return TaskList.unmark(cache, inputArr);
+
+                } else if (inputArr[0].equals("todo")) {
+                    return TaskList.todo(cache, inputArr);
+
+                } else if (inputArr[0].equals("deadline")) {
+                    return TaskList.deadline(cache, inputArr);
+
+                } else if (inputArr[0].equals("event")) {
+                    return TaskList.event(cache, inputArr);
+
+                } else if (inputArr[0].equals("delete")) {
+                    return TaskList.delete(cache, inputArr);
+
+                } else if (inputArr[0].equals("find")) {
+                    return TaskList.find(cache, inputArr);
+
+                } else if (inputArr[0].equals("bye")) {
+                    return TextUI.bye();
+
+                }
+
+            } else {
+
+            }
+        }
+        return "Not a valid command!";
+
+
+    }
+
+    public Burrito() {
+        TextUI = new TextUI();
+        storage = new Storage();
+        parser = new Parser();
+
+        cache = storage.initCache();
+    }
+
     public static void main(String[] args) {
 
-        TextUI = new TextUI();
+        /*TextUI = new TextUI();
         storage = new Storage();
         parser = new Parser();
 
@@ -94,13 +146,13 @@ public class Burrito {
 
 
             }
-            storage.saveToDisk();
+            storage.saveToDisk(cache);
             System.out.println(lineSeperator);
 
 
 
 
-        }
+        }*/
 
 
     }

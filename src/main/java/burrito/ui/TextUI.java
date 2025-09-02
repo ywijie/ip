@@ -12,16 +12,18 @@ public class TextUI {
     /**
      * Prints the contents of the Task List
      *
-     * @return void.
+     * @return String representation of the Task List.
      */
-    static public void list(List<Task> cache) {
-        System.out.println("Here are the tasks in your list:");
+    static public String list(List<Task> cache) {
+        String output = "Here are the tasks in your list:" + "\n";
+
         for (int i = 0; i < cache.size(); i++) {
             int tempi = i + 1;
 
-            System.out.println(tempi + ". " + cache.get(i).toString());
+            output += tempi + ". " + cache.get(i).toString() + "\n";
 
         }
+        return output;
     }
 
 
@@ -29,10 +31,10 @@ public class TextUI {
     /**
      * Message for terminating the program
      *
-     * @return void.
+     * @return String representation of goodbye message.
      */
-    static public void bye() {
-        System.out.println("Bye. Hope to see you again soon!");
+    static public String bye() {
+        return "Bye. Hope to see you again soon!";
 
     }
 

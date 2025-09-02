@@ -1,6 +1,8 @@
 package burrito.tasklist;
 
 import burrito.parser.Parser;
+import burrito.storage.Storage;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -13,22 +15,24 @@ public class TaskList {
      *
      * @param inputArr User input
      * @param cache List of tasks
-     * @return List<Task> cache.
+     * @return String representation of command outcome.
      */
-    static public List<Task> mark(List<Task> cache, String[] inputArr) {
+    static public String mark(List<Task> cache, String[] inputArr) {
+        String output = "";
         if (inputArr.length <= 1) {
-            System.out.println("Sorry! you didn't specify the index.");
+            output = "Sorry! you didn't specify the index.";
         } else {
             try {
                 cache.get(Integer.parseInt(inputArr[1]) - 1).setStatus(true);
-                System.out.println("Nice! I've marked this task as done.");
-                System.out.println(cache.get(Integer.parseInt(inputArr[1]) - 1).toString());
+                output += "Nice! I've marked this task as done." + "\n";
+                output += cache.get(Integer.parseInt(inputArr[1]) - 1).toString() + "\n";
 
             } catch (Exception e) {
-                System.out.println("Wrong formatting for index!");
+                output = "Wrong formatting for index!";
             } finally { }
         }
-        return cache;
+        Storage.saveToDisk(cache);
+        return output;
 
     }
 
@@ -37,24 +41,27 @@ public class TaskList {
      *
      * @param inputArr User input
      * @param cache List of tasks
-     * @return List<Task> cache.
+     * @return String representation of command outcome.
      */
-    static public List<Task> unmark(List<Task> cache, String[] inputArr) {
+    static public String unmark(List<Task> cache, String[] inputArr) {
+        String output = "";
+
         if (inputArr.length <= 1) {
-            System.out.println("Sorry! you didn't specify the index.");
+            output += "Sorry! you didn't specify the index.";
         } else {
             try {
                 cache.get(Integer.parseInt(inputArr[1]) - 1).setStatus(false);
-                System.out.println("Nice! I've marked this task as not done yet.");
-                System.out.println(cache.get(Integer.parseInt(inputArr[1]) - 1).toString());
+                output += "Nice! I've marked this task as not done yet." + "\n";
+                output += cache.get(Integer.parseInt(inputArr[1]) - 1).toString() + "\n";
 
 
             } catch (Exception e) {
-                System.out.println("Wrong formatting for index!" + e.getMessage());
+                output = "Wrong formatting for index!";
             } finally { }
 
         }
-        return cache;
+        Storage.saveToDisk(cache);
+        return output;
     }
 
     /**
@@ -62,20 +69,22 @@ public class TaskList {
      *
      * @param inputArr User input
      * @param cache List of tasks
-     * @return List<Task> cache.
+     * @return String representation of command outcome.
      */
-    static public List<Task> todo(List<Task> cache, String[] inputArr) {
+    static public String todo(List<Task> cache, String[] inputArr) {
+        String output = "";
         try {
             cache.add(new Todo(inputArr[1]));
-            System.out.println("Got it. I've added this task:");
-            System.out.println(cache.get(cache.size() - 1).toString());
-            System.out.println("Now you have " + cache.size() + " task(s) in the list.");
+            output += "Got it. I've added this task:" + "\n";
+            output += cache.get(cache.size() - 1).toString() + "\n";
+            output += "Now you have " + cache.size() + " task(s) in the list."  + "\n";
 
         } catch (Exception e) {
-            System.out.println("Todo description cannot be empty!");
+            output = "Todo description cannot be empty!";
 
         } finally {}
-        return cache;
+        Storage.saveToDisk(cache);
+        return output;
 
     }
 
@@ -84,24 +93,26 @@ public class TaskList {
      *
      * @param inputArr User input
      * @param cache List of tasks
-     * @return List<Task> cache.
+     * @return String representation of command outcome.
      */
-    static public List<Task> deadline(List<Task> cache, String[] inputArr) {
+    static public String deadline(List<Task> cache, String[] inputArr) {
+        String output = "";
         try {
             String[] newInputArr = inputArr[1].split(" /by ", 2);
             String[] newInputArr2 = newInputArr[1].split(" ");
             newInputArr[1] = Parser.dateParser(newInputArr2[0]) + " " + Parser.timeParser(newInputArr2[1]);
 
             cache.add(new Deadline(newInputArr[0], newInputArr[1]));
-            System.out.println("Got it. I've added this task:");
-            System.out.println(cache.get(cache.size() - 1).toString());
-            System.out.println("Now you have " + cache.size() + " task(s) in the list.");
+            output += "Got it. I've added this task:" + "\n";
+            output += cache.get(cache.size() - 1).toString() + "\n";
+            output += "Now you have " + cache.size() + " task(s) in the list.";
 
         } catch (Exception e) {
-            System.out.println("Something went wrong, check your syntax! (seperate with \"/by\"");
+            output = "Something went wrong, check your syntax! (seperate with \"/by\"";
 
         } finally {}
-        return cache;
+        Storage.saveToDisk(cache);
+        return output;
 
     }
 
@@ -110,11 +121,11 @@ public class TaskList {
      *
      * @param inputArr User input
      * @param cache List of tasks
-     * @return List<Task> cache.
+     * @return String representation of command outcome.
      */
-    static public List<Task> event(List<Task> cache, String[] inputArr) {
+    static public String event(List<Task> cache, String[] inputArr) {
 
-
+        String output = "";
         try {
             String[] newInputArr = inputArr[1].split(" /from ", 2);
             String[] newInputArr2 = newInputArr[1].split(" /to ", 2);
@@ -126,15 +137,16 @@ public class TaskList {
             newInputArr2[1] = Parser.dateParser(newInputArr4[0]) + " " + Parser.timeParser(newInputArr4[1]);
 
             cache.add(new Event(newInputArr[0], newInputArr2[0], newInputArr2[1]));
-            System.out.println("Got it. I've added this task:");
-            System.out.println(cache.get(cache.size() - 1).toString());
-            System.out.println("Now you have " + cache.size() + " task(s) in the list.");
+            output += "Got it. I've added this task:" + "\n";
+            output += cache.get(cache.size() - 1).toString() + "\n";
+            output += "Now you have " + cache.size() + " task(s) in the list.";
 
         } catch (Exception e) {
-            System.out.println("Something went wrong, check your syntax! (seperate with \"/from\" and \"/to\"");
+            output = "Something went wrong, check your syntax! (seperate with \"/from\" and \"/to\"";
 
         } finally {}
-        return cache;
+        Storage.saveToDisk(cache);
+        return output;
 
     }
 
@@ -143,19 +155,21 @@ public class TaskList {
      *
      * @param inputArr User input
      * @param cache List of tasks
-     * @return List<Task> cache.
+     * @return String representation of command outcome.
      */
-    static public List<Task> delete(List<Task> cache, String[] inputArr) {
+    static public String delete(List<Task> cache, String[] inputArr) {
+        String output = "";
         try {
-            System.out.println("Noted. I've removed this task:");
-            System.out.println(cache.get(Integer.parseInt(inputArr[1]) - 1).toString());
+            output += "Noted. I've removed this task:" + "\n";
+            output += cache.get(Integer.parseInt(inputArr[1]) - 1).toString() + "\n";
             cache.remove(Integer.parseInt(inputArr[1]) - 1);
-            System.out.println("Now you have " + cache.size() + " task(s) in the list.");
+            output += "Now you have " + cache.size() + " task(s) in the list.";
 
         } catch (Exception e) {
-            System.out.println("Invalid index!");
+            output = "Invalid index!";
         } finally {}
-        return cache;
+        Storage.saveToDisk(cache);
+        return output;
     }
 
     /**
@@ -163,9 +177,10 @@ public class TaskList {
      *
      * @param inputArr User input, search query.
      * @param cache List of tasks
-     * @return void
+     * @return String representation of command outcome.
      */
-    static public void find(List<Task> cache, String[] inputArr) {
+    static public String find(List<Task> cache, String[] inputArr) {
+        String output = "";
         try {
             List<Task> tempCache = new ArrayList<Task>();
             for (int i = 0; i < cache.size(); i++) {
@@ -174,17 +189,18 @@ public class TaskList {
                 }
             }
             if (tempCache.size() > 0) {
-                System.out.println("Here are matching tasks in your list:");
+                output += "Here are matching tasks in your list:" + "\n";
                 for (int i = 0; i < tempCache.size(); i++) {
-                    System.out.println((i + 1) + ". " + tempCache.get(i).toString());
+                    output += (i + 1) + ". " + tempCache.get(i).toString() + "\n";
                 }
             } else {
-                System.out.println("No matching tasks in your list.");
+                output = "No matching tasks in your list.";
             }
 
         } catch (Exception e) {
-            System.out.println("Invalid search term!");
+            output = "Invalid search term!";
         } finally {}
+        return output;
 
     }
 
