@@ -6,10 +6,16 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import java.time.LocalDate;
+
 
 import java.io.IOException;
 import java.util.Collections;
@@ -22,7 +28,16 @@ public class DialogBox extends HBox {
     @FXML
     private Label dialog;
     @FXML
+    private Label name;
+    @FXML
+    private Label date;
+    @FXML
     private ImageView displayPicture;
+    @FXML
+    private VBox dialogWrapper;
+    @FXML
+    private HBox nameWrapper;
+
 
     private DialogBox(String text, Image img) {
         try {
@@ -34,8 +49,21 @@ public class DialogBox extends HBox {
             e.printStackTrace();
         }
 
+        Circle clip = new Circle(img.getWidth() / 2, img.getHeight() / 2, img.getHeight() / 2);
+        ImageView imageView = new ImageView(img);
+        imageView.setClip(clip);
+        SnapshotParameters parameters = new SnapshotParameters();
+        parameters.setFill(Color.TRANSPARENT);
+        Image img2 =  imageView.snapshot(parameters, null);
+
+        LocalDate myObj = LocalDate.now();
+
+        name.getStyleClass().add("label-name");
+        date.getStyleClass().add("label-date");
+        name.setText(myObj + "");
+        date.setText("You");
         dialog.setText(text);
-        displayPicture.setImage(img);
+        displayPicture.setImage(img2);
     }
 
     /**
@@ -46,7 +74,17 @@ public class DialogBox extends HBox {
         Collections.reverse(tmp);
         getChildren().setAll(tmp);
         setAlignment(Pos.TOP_LEFT);
-        dialog.getStyleClass().add("reply-label");
+        LocalDate myObj = LocalDate.now();
+        name.getStyleClass().remove("label-name");
+        date.getStyleClass().remove("label-date");
+        name.getStyleClass().add("label-date");
+        date.getStyleClass().add("label-name");
+        name.setText("Burrito");
+        date.setText("" + myObj);
+
+
+        dialogWrapper.setAlignment(Pos.TOP_LEFT);
+        nameWrapper.setAlignment(Pos.TOP_LEFT);
     }
 
     public static DialogBox getUserDialog(String text, Image img) {
