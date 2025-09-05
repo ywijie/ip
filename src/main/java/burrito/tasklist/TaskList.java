@@ -25,7 +25,7 @@ public class TaskList {
             try {
                 cache.get(Integer.parseInt(inputArr[1]) - 1).setStatus(true);
                 output += "Nice! I've marked this task as done." + "\n";
-                output += cache.get(Integer.parseInt(inputArr[1]) - 1).toString() + "\n";
+                output += cache.get(Integer.parseInt(inputArr[1]) - 1).toString() + "\n ";
 
             } catch (Exception e) {
                 output = "Wrong formatting for index!";
@@ -52,7 +52,7 @@ public class TaskList {
             try {
                 cache.get(Integer.parseInt(inputArr[1]) - 1).setStatus(false);
                 output += "Nice! I've marked this task as not done yet." + "\n";
-                output += cache.get(Integer.parseInt(inputArr[1]) - 1).toString() + "\n";
+                output += cache.get(Integer.parseInt(inputArr[1]) - 1).toString() + "\n ";
 
 
             } catch (Exception e) {
@@ -77,7 +77,7 @@ public class TaskList {
             cache.add(new Todo(inputArr[1]));
             output += "Got it. I've added this task:" + "\n";
             output += cache.get(cache.size() - 1).toString() + "\n";
-            output += "Now you have " + cache.size() + " task(s) in the list."  + "\n";
+            output += "Now you have " + cache.size() + " task(s) in the list." + "\n ";
 
         } catch (Exception e) {
             output = "Todo description cannot be empty!";
@@ -105,7 +105,7 @@ public class TaskList {
             cache.add(new Deadline(newInputArr[0], newInputArr[1]));
             output += "Got it. I've added this task:" + "\n";
             output += cache.get(cache.size() - 1).toString() + "\n";
-            output += "Now you have " + cache.size() + " task(s) in the list.";
+            output += "Now you have " + cache.size() + " task(s) in the list."  + "\n ";
 
         } catch (Exception e) {
             output = "Something went wrong, check your syntax! (seperate with \"/by\"";
@@ -139,7 +139,7 @@ public class TaskList {
             cache.add(new Event(newInputArr[0], newInputArr2[0], newInputArr2[1]));
             output += "Got it. I've added this task:" + "\n";
             output += cache.get(cache.size() - 1).toString() + "\n";
-            output += "Now you have " + cache.size() + " task(s) in the list.";
+            output += "Now you have " + cache.size() + " task(s) in the list."  + "\n ";
 
         } catch (Exception e) {
             output = "Something went wrong, check your syntax! (seperate with \"/from\" and \"/to\"";
@@ -191,7 +191,7 @@ public class TaskList {
             if (tempCache.size() > 0) {
                 output += "Here are matching tasks in your list:" + "\n";
                 for (int i = 0; i < tempCache.size(); i++) {
-                    output += (i + 1) + ". " + tempCache.get(i).toString() + "\n";
+                    output += (i + 1) + ". " + tempCache.get(i).toString() + "\n ";
                 }
             } else {
                 output = "No matching tasks in your list.";

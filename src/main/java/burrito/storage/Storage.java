@@ -26,7 +26,7 @@ public class Storage {
      *
      * @return void.
      */
-    public List<Task> initCache() {
+    public List<Task> initializeCache() {
         try {
 
             Files.createDirectories(Paths.get(filePath));

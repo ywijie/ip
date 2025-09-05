@@ -20,7 +20,7 @@ public class TextUI {
         for (int i = 0; i < cache.size(); i++) {
             int tempi = i + 1;
 
-            output += tempi + ". " + cache.get(i).toString() + "\n";
+            output += tempi + ". " + cache.get(i).toString() + "\n ";
 
         }
         return output;

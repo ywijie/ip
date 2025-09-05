@@ -16,8 +16,8 @@ public class Burrito {
     static String[] commands = {"bye", "list", "mark", "unmark", "todo", "deadline", "event", "delete", "find"};
 
 
-    static TextUI TextUI;
-    static TaskList TaskList;
+    static TextUI textUI;
+    static TaskList taskList;
     static Storage storage;
     static Parser parser;
 
@@ -66,11 +66,11 @@ public class Burrito {
     }
 
     public Burrito() {
-        TextUI = new TextUI();
+        textUI = new TextUI();
         storage = new Storage();
         parser = new Parser();
 
-        cache = storage.initCache();
+        cache = storage.initializeCache();
     }
 
     public static void main(String[] args) {

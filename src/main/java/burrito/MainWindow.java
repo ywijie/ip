@@ -45,7 +45,7 @@ public class MainWindow extends AnchorPane {
         String response = burrito.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getBurritoDialog(response, dukeImage)
         );
         userInput.clear();
     }

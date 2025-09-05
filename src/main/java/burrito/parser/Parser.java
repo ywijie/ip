@@ -18,9 +18,9 @@ public class Parser {
     static public String dateParser(String input) {
         try {
 
-            LocalDate d1 = LocalDate.parse(input.replace("/", "-"));
+            LocalDate date = LocalDate.parse(input.replace("/", "-"));
 
-            return d1.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
+            return date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
         } catch (Exception e) {
             System.out.println("Error! Wrong date formatting (Use YYYY-MM-DD, eg 2019-12-28).");
             return input;
