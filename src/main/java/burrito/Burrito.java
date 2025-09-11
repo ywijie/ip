@@ -12,7 +12,6 @@ import burrito.storage.Storage;
 public class Burrito {
 
     static List<Task> cache = new ArrayList<>();
-    private static final String lineSeperator = "____________________________________________________________";
     static String[] commands = {"bye", "list", "mark", "unmark", "todo", "deadline", "event", "delete", "find"};
 
 
@@ -75,84 +74,7 @@ public class Burrito {
 
     public static void main(String[] args) {
 
-        /*TextUI = new TextUI();
-        storage = new Storage();
-        parser = new Parser();
 
-        boolean isDone = false;
-        String input;
-        boolean isCommand = false;
-
-        cache = storage.initCache();
-
-        TextUI.welcome();
-        Scanner scanner = new Scanner(System.in);
-
-        while (!isDone && scanner.hasNextLine()) {
-            isCommand = false;
-
-            input = scanner.nextLine();
-            String inputArr[] = input.split(" ", 2);
-            System.out.println(lineSeperator);
-
-            for (int i = 0; i < commands.length; i++) {
-                if (commands[i].equals(inputArr[0])) {
-                    if (inputArr[0].equals("list")) {
-                        TextUI.list(cache);
-                        isCommand = true;
-
-                    } else if (inputArr[0].equals("mark")) {
-                        cache = TaskList.mark(cache, inputArr);
-                        isCommand = true;
-
-                    } else if (inputArr[0].equals("unmark")) {
-                        cache = TaskList.unmark(cache, inputArr);
-                        isCommand = true;
-
-                    } else if (inputArr[0].equals("todo")) {
-                        cache = TaskList.todo(cache, inputArr);
-                        isCommand = true;
-
-                    } else if (inputArr[0].equals("deadline")) {
-                        cache = TaskList.deadline(cache, inputArr);
-                        isCommand = true;
-
-                    } else if (inputArr[0].equals("event")) {
-                        cache = TaskList.event(cache, inputArr);
-                        isCommand = true;
-
-                    } else if (inputArr[0].equals("delete")) {
-                        cache = TaskList.delete(cache, inputArr);
-                        isCommand = true;
-
-                    } else if (inputArr[0].equals("find")) {
-                        TaskList.find(cache, inputArr);
-                        isCommand = true;
-
-                    } else if (inputArr[0].equals("bye")) {
-                        TextUI.bye();
-                        isDone = true;
-                        isCommand = true;
-                    }
-
-                } else {
-
-                }
-            }
-
-
-            if (!isCommand){
-                System.out.println("Not a valid command!");
-
-
-            }
-            storage.saveToDisk(cache);
-            System.out.println(lineSeperator);
-
-
-
-
-        }*/
 
 
     }

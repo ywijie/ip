@@ -32,6 +32,7 @@ public class TaskList {
             } finally { }
         }
         Storage.saveToDisk(cache);
+        assert output.length() > 1 : "Task not found in cache.";
         return output;
 
     }
@@ -61,6 +62,7 @@ public class TaskList {
 
         }
         Storage.saveToDisk(cache);
+        assert output.length() > 1 : "Task not found in cache.";
         return output;
     }
 
@@ -84,6 +86,7 @@ public class TaskList {
 
         } finally {}
         Storage.saveToDisk(cache);
+        assert output.length() > 1 : "Task not found in cache.";
         return output;
 
     }
@@ -112,6 +115,7 @@ public class TaskList {
 
         } finally {}
         Storage.saveToDisk(cache);
+        assert output.length() > 1 : "Task not found in cache.";
         return output;
 
     }
@@ -146,6 +150,7 @@ public class TaskList {
 
         } finally {}
         Storage.saveToDisk(cache);
+        assert output.length() > 1 : "Task not found in cache.";
         return output;
 
     }
@@ -169,6 +174,7 @@ public class TaskList {
             output = "Invalid index!";
         } finally {}
         Storage.saveToDisk(cache);
+        assert output.length() > 1 : "Task not found in cache.";
         return output;
     }
 
@@ -200,6 +206,7 @@ public class TaskList {
         } catch (Exception e) {
             output = "Invalid search term!";
         } finally {}
+        assert output.length() > 1 : "Task not found in cache.";
         return output;
 
     }

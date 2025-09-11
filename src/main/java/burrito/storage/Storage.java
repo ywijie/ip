@@ -93,6 +93,7 @@ public class Storage {
             }
             fw.close();
         } catch (Exception e) {
+
             System.out.println("Error saving to disk.");
         } finally {}
     }
