@@ -23,6 +23,15 @@ public class TextUI {
     }
 
 
+    /**
+     * Message for terminating the program
+     *
+     * @return String representation of goodbye message.
+     */
+    static public String help() {
+        return "Here are the commands you can use: \n" +
+                "bye, help, list, mark, unmark, todo, deadline, event, delete, find" + "\n ";
+    }
 
     /**
      * Message for terminating the program

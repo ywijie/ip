@@ -12,7 +12,7 @@ import burrito.storage.Storage;
 public class Burrito {
 
     static List<Task> cache = new ArrayList<>();
-    static String[] commands = {"bye", "list", "mark", "unmark", "todo", "deadline", "event", "delete", "find"};
+    static String[] commands = {"bye", "help", "list", "mark", "unmark", "todo", "deadline", "event", "delete", "find"};
 
 
     static TextUI textUI;
@@ -52,6 +52,9 @@ public class Burrito {
                 }
                 case "bye" -> {
                     return TextUI.bye();
+                }
+                case "help" -> {
+                    return TextUI.help();
                 }
                 }
 
