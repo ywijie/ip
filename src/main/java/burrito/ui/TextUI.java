@@ -5,8 +5,6 @@ import java.util.List;
 
 public class TextUI {
 
-    private static final String lineseperator = "____________________________________________________________";
-
     public TextUI() { }
 
     /**
@@ -19,9 +17,7 @@ public class TextUI {
 
         for (int i = 0; i < cache.size(); i++) {
             int tempi = i + 1;
-
             output += tempi + ". " + cache.get(i).toString() + "\n ";
-
         }
         return output;
     }
@@ -35,7 +31,6 @@ public class TextUI {
      */
     static public String bye() {
         return "Bye. Hope to see you again soon!";
-
     }
 
     /**
@@ -44,10 +39,7 @@ public class TextUI {
      * @return void.
      */
     static public void welcome() {
-        System.out.println(lineseperator);
         System.out.println("Hello! I'm Burrito.\nWhat can I do for you?");
-        System.out.println(lineseperator);
-
     }
 
 

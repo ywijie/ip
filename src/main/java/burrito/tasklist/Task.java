@@ -27,6 +27,7 @@ public class Task {
      * @param status The boolean value to be set
      */
     public void setStatus(boolean status) {
+
         isDone = status;
     }
 
@@ -36,6 +37,7 @@ public class Task {
      * @return String value of the description
      */
     public String getDescription() {
+
         return description;
     }
 
@@ -45,6 +47,7 @@ public class Task {
      * @return String representation of event type
      */
     public String getType() {
+
         return " ";
     }
 
@@ -55,6 +58,7 @@ public class Task {
      */
     @Override
     public String toString() {
+
         return "[ ] [" + this.getStatusIcon() + "] " + description;
     }
 }

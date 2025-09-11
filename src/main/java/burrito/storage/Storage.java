@@ -85,8 +85,6 @@ public class Storage {
      */
     static public void saveToDisk(List<Task> c) {
         try {
-
-
             FileWriter fw = new FileWriter(filePath + fileName);
             for (Task task : c) {
                 fw.write(task.toString() + "\n");

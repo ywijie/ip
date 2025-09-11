@@ -26,6 +26,7 @@ public class Event extends Task{
      * @return String value of deadlineStart
      */
     public String getDeadlineStart() {
+
         return deadlineStart;
     }
 
@@ -34,7 +35,8 @@ public class Event extends Task{
      *
      * @return String value of deadlineEnd
      */
-    public String getDeadlineEnd() { return deadlineEnd; }
+    public String getDeadlineEnd() {
+        return deadlineEnd; }
 
     /**
      * Getter for the type of event
@@ -43,6 +45,7 @@ public class Event extends Task{
      */
     @Override
     public String getType() {
+
         return "E";
     }
 
