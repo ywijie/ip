@@ -27,8 +27,8 @@ Burrito is your own personal **no-frills task manager/assistant**. Submit, view,
 | ---------- | ----------------------------- | --------------------------------------- |
 | `list`     | Show all current tasks        | `list`                                  |
 | `todo`     | Add a todo task               | `todo read book`                        |
-| `deadline` | Add a deadline task           | `deadline submit report /by 2025-09-20` |
-| `event`    | Add an event task             | `event team meeting /at 2025-09-22 2pm` |
+| `deadline` | Add a deadline task           | `deadline submit report /by 2025-09-20 1300` |
+| `event`    | Add an event task             | `event meeting/from 2025-09-20 1300 /to 2025-09-20 2100` |
 | `mark`     | Mark a task as completed      | `mark 2`                                |
 | `unmark`   | Unmark a completed task       | `unmark 2`                              |
 | `delete`   | Delete a task                 | `delete 3`                              |
